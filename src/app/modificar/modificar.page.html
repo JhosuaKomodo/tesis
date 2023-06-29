@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Modificar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Product List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let product of products">
+      <ion-label>{{ product.name }}</ion-label>
+      <ion-label>{{ product.description }}</ion-label>
+      <ion-button (click)="deleteProduct(product)">Delete</ion-button>
+      <ion-button (click)="editProduct(product)">Edit</ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-modal [isOpen]="editingProduct">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Edit Product</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-item>
+        <ion-label>Name:</ion-label>
+        <ion-input [(ngModel)]="editingProduct.name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Description:</ion-label>
+        <ion-input [(ngModel)]="editingProduct.description"></ion-input>
+      </ion-item>
+
+      <ion-footer>
+        <ion-button (click)="saveProduct()">Save</ion-button>
+        <ion-button (click)="cancelEditing()">Cancel</ion-button>
+      </ion-footer>
+    </ion-content>
+  </ion-modal>
+</ion-content>
+
+
